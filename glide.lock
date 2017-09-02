@@ -1,0 +1,167 @@
+hash: 0f8055660648ea4a7038b150898c50958e321ae6f71da6008d4dbe7fe5e6c434
+updated: 2017-07-27T17:12:56.059380071+07:00
+imports:
+- name: github.com/alexflint/go-arg
+  version: cef6506c97e5731da728c374ff3523e481026423
+- name: github.com/alexflint/go-scalar
+  version: 45e5d6cd8605faef82fda2bacc59e734a0b6f1f0
+- name: github.com/asaskevich/govalidator
+  version: 4918b99a7cb949bb295f3c7bbaf24b577d806e35
+- name: github.com/beorn7/perks
+  version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
+  subpackages:
+  - quantile
+- name: github.com/facebookgo/inject
+  version: cc1aa653e50f6a9893bcaef89e673e5b24e1e97b
+- name: github.com/facebookgo/structtag
+  version: 217e25fb96916cc60332e399c9aa63f5c422ceed
+- name: github.com/garyburd/redigo
+  version: 433969511232c397de61b1442f9fd49ec06ae9ba
+  subpackages:
+  - internal
+  - redis
+- name: github.com/golang/glog
+  version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+- name: github.com/golang/protobuf
+  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  subpackages:
+  - jsonpb
+  - proto
+  - protoc-gen-go/descriptor
+  - ptypes/any
+- name: github.com/grpc-ecosystem/go-grpc-middleware
+  version: 04e29b049615a854b3a943e372e180c5ec3f7dc3
+  subpackages:
+  - auth
+  - tags
+  - tracing/opentracing
+  - util/metautils
+- name: github.com/grpc-ecosystem/go-grpc-prometheus
+  version: 6b7015e65d366bf3f19b2b2a000a831940f0f7e0
+- name: github.com/grpc-ecosystem/grpc-gateway
+  version: 589b126116b5fc961939b3e156c29e4d9d58222f
+  subpackages:
+  - runtime
+  - runtime/internal
+  - utilities
+- name: github.com/jinzhu/gorm
+  version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
+- name: github.com/jinzhu/inflection
+  version: 1c35d901db3da928c72a72d8458480cc9ade058f
+- name: github.com/jmoiron/sqlx
+  version: d9bd385d68c068f1fabb5057e3dedcbcbb039d0f
+- name: github.com/k0kubun/pp
+  version: 027a6d1765d673d337e687394dbe780dd64e2a1e
+- name: github.com/knq/xo
+  version: 8c7b73d046b4e7fb6f39a9e541a2edc79bc15f08
+- name: github.com/lib/pq
+  version: 91f10e40ba0dd2d0bf9f93ec1d4077711a78df88
+  subpackages:
+  - oid
+- name: github.com/mattn/go-colorable
+  version: ded68f7a9561c023e790de24279db7ebf473ea80
+- name: github.com/mattn/go-isatty
+  version: fc9e8d8ef48496124e79ae0df75490096eccf6fe
+- name: github.com/matttproud/golang_protobuf_extensions
+  version: c12348ce28de40eed0136aa2b644d0ee0650e56c
+  subpackages:
+  - pbutil
+- name: github.com/oklog/ulid
+  version: d311cb43c92434ec4072dfbbda3400741d0a6337
+- name: github.com/opentracing/opentracing-go
+  version: 1949ddbfd147afd4d964a9f00b24eb291e0e7c38
+  subpackages:
+  - ext
+  - log
+- name: github.com/pressly/chi
+  version: 524a020446146841512dd1639e736422e7af53a4
+- name: github.com/prometheus/client_golang
+  version: c5b7fccd204277076155f10851dad72b76a49317
+  subpackages:
+  - prometheus
+- name: github.com/prometheus/client_model
+  version: 6f3806018612930941127f2a7c6c453ba2c527d2
+  subpackages:
+  - go
+- name: github.com/prometheus/common
+  version: 13ba4ddd0caa9c28ca7b7bffe1dfa9ed8d5ef207
+  subpackages:
+  - expfmt
+  - internal/bitbucket.org/ww/goautoneg
+  - model
+- name: github.com/prometheus/procfs
+  version: 65c1f6f8f0fc1e2185eb9863a3bc751496404259
+  subpackages:
+  - xfs
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
+- name: github.com/uber-go/atomic
+  version: 4e336646b2ef9fc6e47be8e21594178f98e5ebcf
+- name: github.com/uber-go/zap
+  version: c064b5c44b285a7e2fd5c9b26e8c38228ce2bccb
+- name: golang.org/x/net
+  version: 3da985ce5951d99de868be4385f21ea6c2b22f24
+  subpackages:
+  - context
+  - http2
+  - http2/hpack
+  - idna
+  - internal/timeseries
+  - lex/httplex
+  - trace
+- name: golang.org/x/sys
+  version: b90f89a1e7a9c1f6b918820b3daa7f08488c8594
+  subpackages:
+  - unix
+- name: golang.org/x/text
+  version: 4ee4af566555f5fbe026368b75596286a312663a
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+- name: google.golang.org/genproto
+  version: aa2eb687b4d3e17154372564ad8d6bf11c3cf21f
+  subpackages:
+  - googleapis
+  - googleapis/api/annotations
+  - googleapis/rpc/status
+- name: google.golang.org/grpc
+  version: 172ccacff3cfbddedcf1ba5ea06cda943bc976c1
+  subpackages:
+  - codes
+  - credentials
+  - grpclb/grpc_lb_v1
+  - grpclog
+  - internal
+  - keepalive
+  - metadata
+  - naming
+  - peer
+  - stats
+  - status
+  - tap
+  - transport
+- name: gopkg.in/mgo.v2
+  version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
+  subpackages:
+  - bson
+  - internal/json
+  - internal/sasl
+  - internal/scram
+- name: gopkg.in/yaml.v2
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
+testImports:
+- name: github.com/davecgh/go-spew
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  subpackages:
+  - spew
+- name: github.com/pmezard/go-difflib
+  version: d8ed2627bdf02c080bf22230dbb337003b7aba2d
+  subpackages:
+  - difflib
+- name: github.com/stretchr/testify
+  version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
+  subpackages:
+  - assert
+  - require

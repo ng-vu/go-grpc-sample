@@ -1,0 +1,69 @@
+syntax = "proto3";
+package partner;
+option go_package = "github.com/ng-vu/go-grpc-sample/pb/partner";
+
+message DeliveryOrder {
+    // string service = 1;
+    string order_id = 2;
+    int64 total_fee = 3;
+    int64 total_amount = 4;
+
+    DeliveryOrderInfo info = 5;
+    OrderCustomer customer = 6;
+    oneof location {
+        string location_id = 7;
+        Address location_address = 8;
+    }
+
+    oneof service {
+        OrderDropoff service_dropoff = 20;
+        OrderPickup service_pickup = 21;
+    }
+}
+
+message Address {
+    string number = 1;
+    string street = 2;
+    string ward = 3;
+    string district = 4;        // 1
+    string province = 5;        // ha noi, ca mau, dong nai
+    string country = 6;
+    string address = 9;
+    string note = 10;
+}
+
+message DeliveryOrderInfo {
+    string order_code = 1;
+    string extra_order_code = 2;
+    string note = 3;
+
+    int64 order_time = 5;
+    int64 expected_time = 6;
+
+    string sender_name = 10;
+    string sender_phone = 11;
+    string sender_email = 12;
+    Address sender_address = 13;
+
+    string receiver_name = 20;
+    string receiver_phone = 21;
+    string receiver_email = 22;
+    Address receiver_address = 23;
+}
+
+message OrderCustomer {
+    string reference_id = 1;
+    string name = 2;
+    string phone = 3;
+    string email = 4;
+    string address = 5;
+}
+
+message OrderDropoff {
+    int64 fee = 1;
+}
+
+message OrderPickup {
+    int64 fee = 2;
+    int64 cod = 3;
+}

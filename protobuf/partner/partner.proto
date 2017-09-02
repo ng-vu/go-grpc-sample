@@ -1,0 +1,71 @@
+syntax = "proto3";
+package partner;
+option go_package = "github.com/ng-vu/go-grpc-sample/pb/partner";
+
+import "partner/model.proto";
+
+import "google/api/annotations.proto";
+import "google/rpc/status.proto";
+
+service BluePartner {
+    rpc VersionInfo(Empty) returns (VersionInfoResponse) {
+       option(google.api.http).get = "/api/v1";
+    };
+
+    rpc AccountInfo(Empty) returns (AccountInfoResponse) {
+        option(google.api.http).get = "/api/v1/account";
+    };
+
+    rpc DeliveryOrdersCreate(DeliveryOrdersCreateRequest) returns (DeliveryOrdersCreateResponse) {
+        option(google.api.http) = { post: "/api/v1/order/delivery/create", body: "*" };
+    };
+
+    rpc DeliveryOrdersUpdateStatus(DeliveryOrdersUpdateStatusRequest) returns (DeliveryOrdersUpdateStatusResponse) {
+        option(google.api.http) = { post: "/api/v1/order/delivery/status", body: "*" };
+    };
+
+    rpc DeliveryOrdersCancel(DeliveryOrdersCancelRequest) returns (DeliveryOrdersCancelResponse) {
+        option(google.api.http) = { post: "/api/v1/order/delivery/cancel", body: "*" };
+    }
+}
+
+message Empty {}
+
+message AccountInfoResponse {
+    string id = 1;
+    string codename = 2;
+    string name = 3;
+}
+
+message VersionInfoResponse {
+    string service = 1;
+    string version = 2;
+    int64  updated_time = 3;
+}
+
+message DeliveryOrdersCreateRequest {
+    string partner = 1;
+    repeated DeliveryOrder orders = 2;
+}
+
+message DeliveryOrdersCreateResponse {
+    map<string,string> order_success = 1;
+    map<string,google.rpc.Status> order_errors = 2;
+}
+
+message DeliveryOrdersUpdateStatusRequest {
+
+}
+
+message DeliveryOrdersUpdateStatusResponse {
+
+
+}
+
+message DeliveryOrdersCancelRequest {
+
+}
+
+message DeliveryOrdersCancelResponse {
+
+}

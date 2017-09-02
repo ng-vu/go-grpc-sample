@@ -1,0 +1,100 @@
+syntax = "proto3";
+package agency;
+option go_package = "github.com/ng-vu/go-grpc-sample/pb/agency";
+
+import "agency/model.proto";
+
+import "google/api/annotations.proto";
+import "google/rpc/status.proto";
+
+service BlueAgency {
+    rpc VersionInfo(Empty) returns (VersionInfoResponse) {
+        option (google.api.http).get = "/api/v1";
+    };
+
+    rpc AccountLogin(AccountLoginRequest) returns (AccountLoginResponse) {
+        option (google.api.http) = { post: "/api/v1/account/login", body: "*" };
+    }
+    rpc AccountLogout(AccountLogoutRequest) returns (AccountLogoutResponse) {
+        option (google.api.http) = { post: "/api/v1/account/logout", body: "*" };
+    }
+
+    rpc CustomerLookup(CustomerLookupRequest) returns (CustomerLookupResponse) {
+        option (google.api.http) = { post: "/api/v1/customer/lookup", body: "*" };
+    }
+    rpc CustomerAction(CustomerActionRequest) returns (CustomerActionResponse) {
+        option (google.api.http) = { post: "/api/v1/customer/action", body: "*" };
+    }
+
+    rpc ReceiveFromSupplier(ReceiveFromSupplierRequest) returns (ReceiveFromSupplierResponse) {
+        option (google.api.http) = { post: "/api/v1/supplier/receive", body: "*" };
+    }
+    rpc TransferToSupplier(TransferToSupplierRequest) returns (TransferToSupplierResponse) {
+        option (google.api.http) = { post: "/api/v1/supplier/transfer", body: "*" };
+    }
+}
+
+message Empty {}
+
+message VersionInfoResponse {
+    string service = 1;
+    string version = 2;
+    int64  updated_time = 3;
+}
+
+message AccountLoginRequest {
+    string phone = 1;
+    string password = 2;
+}
+
+message AccountLoginResponse {
+    string user_id = 1;
+    string access_token = 2;
+    AgencyStaff user_info = 3;
+}
+
+message AccountLogoutRequest {}
+message AccountLogoutResponse {}
+
+message CustomerLookupRequest {
+    string phone = 1;
+}
+
+message CustomerLookupResponse {
+    string customer_token = 1;
+    Customer customer = 2;
+    repeated Service services = 3;
+    repeated Order orders = 4;
+}
+
+message CustomerActionRequest {
+    string customer_token = 1;
+    string customer_phone = 2;
+    repeated CustomerActionOrder orders = 3;
+}
+
+message CustomerActionOrder {
+    string order_id = 1;
+    string service_id = 2;
+}
+
+message CustomerActionResponse {
+    map<string,string> order_success = 1;
+    map<string,google.rpc.Status> order_errors = 2;
+}
+
+message ReceiveFromSupplierRequest {
+
+}
+
+message ReceiveFromSupplierResponse {
+
+}
+
+message TransferToSupplierRequest {
+
+}
+
+message TransferToSupplierResponse {
+
+}

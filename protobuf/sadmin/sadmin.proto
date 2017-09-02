@@ -1,0 +1,92 @@
+syntax = "proto3";
+package sadmin;
+option go_package = "github.com/ng-vu/go-grpc-sample/pb/sadmin";
+
+import "agency/model.proto";
+
+import "google/api/annotations.proto";
+
+service BlueSAdmin {
+    rpc VersionInfo(Empty) returns (VersionInfoResponse) {
+        option(google.api.http).get = "/api/__";
+    };
+
+    rpc CreateAgencyStaff(CreateAgencyStaffRequest) returns (CreateAgencyStaffResponse) {
+        option(google.api.http) = { post: "/api/__/CreateAgencyStaff", body: "*" };
+    };
+    rpc CreateServiceProvider(CreateServiceProviderRequest) returns (CreateServiceProviderResponse) {
+        option(google.api.http) = { post: "/api/__/CreateServiceProvider", body: "*" };
+    };
+    rpc CreateService(CreateServiceRequest) returns (CreateServiceResponse) {
+        option(google.api.http) = { post: "/api/__/CreateService", body: "*" };
+    };
+    rpc GenerateServiceProviderSecret(GenerateServiceProviderSecretRequest) returns (GenerateServiceProviderSecretResponse) {
+        option(google.api.http) = { post: "/api/__/GenerateServiceProviderSecret", body: "*" };
+    }
+
+    rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse) {
+        option(google.api.http) = { post: "/api/__/AddWebhook", body: "*" };
+    };
+    rpc RemoveWebhook(RemoveWebhookRequest) returns (RemoveWebhookResponse) {
+        option(google.api.http) = { post: "/api/__/RemoveWebhook", body: "*" };
+    };
+}
+
+message Empty {}
+
+message VersionInfoResponse {
+    string service = 1;
+    string version = 2;
+    int64  updated_time = 3;
+}
+
+message CreateAgencyStaffRequest {
+    agency.AgencyStaff info = 1;
+    string password = 2;
+}
+
+message CreateAgencyStaffResponse {
+    string user_id = 1;
+}
+
+message CreateServiceProviderRequest {
+    string codename = 1;
+    string name = 2;
+}
+
+message CreateServiceProviderResponse {
+    string id = 1;
+    string api_key = 2;
+}
+
+message CreateServiceRequest {
+
+}
+
+message CreateServiceResponse {
+
+}
+
+message GenerateServiceProviderSecretRequest {
+    string codename = 1;
+}
+
+message GenerateServiceProviderSecretResponse {
+
+}
+
+message AddWebhookRequest {
+
+}
+
+message AddWebhookResponse {
+
+}
+
+message RemoveWebhookRequest {
+
+}
+
+message RemoveWebhookResponse {
+
+}

@@ -1,0 +1,48 @@
+version: '2'
+services:
+  redis:
+    container_name: blue_redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
+  mongo:
+    container_name: blue_mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - blue_mongo_data:/data/db
+
+  postgres:
+    container_name: blue_postgres
+    image: postgres:alpine
+    ports: 
+      - 5432:5432
+    volumes:
+      - blue_postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespass
+      - POSTGRES_DB=blue_dev
+      - POSTGRES_DATA=/var/lib/postgresql/data/pgdata
+  
+  pgadmin:
+    container_name: blue_pgadmin
+    image: thajeztah/pgadmin4
+    ports:
+      - 5050:5050
+    volumes:
+      - pgadmin-data:/pgadmin
+
+volumes:
+  redis-data:
+    external: false
+  blue_mongo_data:
+    external: true
+  blue_postgres_data:
+    external: true
+  pgadmin-data:
+    external: false

@@ -1,0 +1,57 @@
+package: github.com/ng-vu/go-grpc-sample
+import:
+- package: github.com/garyburd/redigo
+  version: ^1.1.0
+  subpackages:
+  - redis
+- package: github.com/k0kubun/pp
+  version: ^2.3.0
+- package: github.com/uber-go/zap
+  version: c064b5c44b285a7e2fd5c9b26e8c38228ce2bccb
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: google.golang.org/grpc
+  version: ^1.4.2
+  subpackages:
+  - metadata
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson
+- package: github.com/grpc-ecosystem/grpc-gateway
+  version: ^1.2.2
+- package: github.com/grpc-ecosystem/go-grpc-middleware
+- package: github.com/opentracing/opentracing-go
+  version: ^1.0.2
+- package: github.com/golang/protobuf
+- package: google.golang.org/genproto
+  subpackages:
+  - googleapis
+- package: golang.org/x/text
+  subpackages:
+  - secure/bidirule
+- package: github.com/satori/go.uuid
+  version: ^1.1.0
+- package: github.com/prometheus/client_golang
+  version: ^0.8.0
+- package: gopkg.in/yaml.v2
+- package: github.com/pressly/chi
+  version: ^3.1.0
+- package: github.com/jmoiron/sqlx
+- package: github.com/lib/pq
+- package: github.com/facebookgo/inject
+- package: github.com/facebookgo/structtag
+- package: github.com/jinzhu/gorm
+  version: ^1.0.0
+- package: github.com/jinzhu/inflection
+- package: github.com/oklog/ulid
+  version: ^0.3.0
+- package: github.com/asaskevich/govalidator
+  version: ^6.0.0
+- package: github.com/knq/xo
+- package: github.com/alexflint/go-arg
+- package: github.com/alexflint/go-scalar
+- package: github.com/golang/glog
+testImport:
+- package: github.com/stretchr/testify
+  version: ^1.1.4

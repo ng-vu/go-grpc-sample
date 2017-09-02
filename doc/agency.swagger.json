@@ -1,0 +1,515 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "agency/agency.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1": {
+      "get": {
+        "operationId": "VersionInfo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyVersionInfoResponse"
+            }
+          }
+        },
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    },
+    "/api/v1/account/login": {
+      "post": {
+        "operationId": "AccountLogin",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyAccountLoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agencyAccountLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    },
+    "/api/v1/account/logout": {
+      "post": {
+        "operationId": "AccountLogout",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyAccountLogoutResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agencyAccountLogoutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    },
+    "/api/v1/customer/action": {
+      "post": {
+        "operationId": "CustomerAction",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyCustomerActionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agencyCustomerActionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    },
+    "/api/v1/customer/lookup": {
+      "post": {
+        "operationId": "CustomerLookup",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyCustomerLookupResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agencyCustomerLookupRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    },
+    "/api/v1/supplier/receive": {
+      "post": {
+        "operationId": "ReceiveFromSupplier",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyReceiveFromSupplierResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agencyReceiveFromSupplierRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    },
+    "/api/v1/supplier/transfer": {
+      "post": {
+        "operationId": "TransferToSupplier",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/agencyTransferToSupplierResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agencyTransferToSupplierRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueAgency"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "OrderStatusDone": {
+      "type": "string",
+      "enum": [
+        "process",
+        "done",
+        "cancel"
+      ],
+      "default": "process"
+    },
+    "agencyAccountLoginRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyAccountLoginResponse": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "access_token": {
+          "type": "string"
+        },
+        "user_info": {
+          "$ref": "#/definitions/agencyAgencyStaff"
+        }
+      }
+    },
+    "agencyAccountLogoutRequest": {
+      "type": "object"
+    },
+    "agencyAccountLogoutResponse": {
+      "type": "object"
+    },
+    "agencyAgencyStaff": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyCustomer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyCustomerActionOrder": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string"
+        },
+        "service_id": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyCustomerActionRequest": {
+      "type": "object",
+      "properties": {
+        "customer_token": {
+          "type": "string"
+        },
+        "customer_phone": {
+          "type": "string"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/agencyCustomerActionOrder"
+          }
+        }
+      }
+    },
+    "agencyCustomerActionResponse": {
+      "type": "object",
+      "properties": {
+        "order_success": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "order_errors": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/rpcStatus"
+          }
+        }
+      }
+    },
+    "agencyCustomerLookupRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyCustomerLookupResponse": {
+      "type": "object",
+      "properties": {
+        "customer_token": {
+          "type": "string"
+        },
+        "customer": {
+          "$ref": "#/definitions/agencyCustomer"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/agencyService"
+          }
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/agencyOrder"
+          }
+        }
+      }
+    },
+    "agencyEmpty": {
+      "type": "object"
+    },
+    "agencyOrder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "service_id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status_done": {
+          "$ref": "#/definitions/OrderStatusDone"
+        },
+        "total_amount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total_fee": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "info": {
+          "$ref": "#/definitions/agencyOrderInfo"
+        },
+        "customer": {
+          "$ref": "#/definitions/agencyOrderCustomer"
+        },
+        "service": {
+          "$ref": "#/definitions/agencyOrderService"
+        }
+      }
+    },
+    "agencyOrderCustomer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyOrderInfo": {
+      "type": "object",
+      "properties": {
+        "provider_code": {
+          "type": "string"
+        },
+        "customer_code": {
+          "type": "string"
+        },
+        "order_time": {
+          "type": "string",
+          "format": "int64"
+        },
+        "expected_time": {
+          "type": "string",
+          "format": "int64"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyOrderService": {
+      "type": "object",
+      "properties": {
+        "fee": {
+          "type": "string"
+        },
+        "cod": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyReceiveFromSupplierRequest": {
+      "type": "object"
+    },
+    "agencyReceiveFromSupplierResponse": {
+      "type": "object"
+    },
+    "agencyService": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "agencyTransferToSupplierRequest": {
+      "type": "object"
+    },
+    "agencyTransferToSupplierResponse": {
+      "type": "object"
+    },
+    "agencyVersionInfoResponse": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "updated_time": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "description": "Must be a valid serialized protocol buffer of the above specified type."
+        }
+      },
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]."
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\n[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
+        }
+      },
+      "description": "- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\n[google.rpc.Code][google.rpc.Code], but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` which can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting purpose.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
+      "title": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:"
+    }
+  }
+}

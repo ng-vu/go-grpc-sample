@@ -1,0 +1,301 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "sadmin/sadmin.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/__": {
+      "get": {
+        "operationId": "VersionInfo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminVersionInfoResponse"
+            }
+          }
+        },
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    },
+    "/api/__/AddWebhook": {
+      "post": {
+        "operationId": "AddWebhook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminAddWebhookResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sadminAddWebhookRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    },
+    "/api/__/CreateAgencyStaff": {
+      "post": {
+        "operationId": "CreateAgencyStaff",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminCreateAgencyStaffResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sadminCreateAgencyStaffRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    },
+    "/api/__/CreateService": {
+      "post": {
+        "operationId": "CreateService",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminCreateServiceResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sadminCreateServiceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    },
+    "/api/__/CreateServiceProvider": {
+      "post": {
+        "operationId": "CreateServiceProvider",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminCreateServiceProviderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sadminCreateServiceProviderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    },
+    "/api/__/GenerateServiceProviderSecret": {
+      "post": {
+        "operationId": "GenerateServiceProviderSecret",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminGenerateServiceProviderSecretResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sadminGenerateServiceProviderSecretRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    },
+    "/api/__/RemoveWebhook": {
+      "post": {
+        "operationId": "RemoveWebhook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/sadminRemoveWebhookResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sadminRemoveWebhookRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BlueSAdmin"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "agencyAgencyStaff": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "sadminAddWebhookRequest": {
+      "type": "object"
+    },
+    "sadminAddWebhookResponse": {
+      "type": "object"
+    },
+    "sadminCreateAgencyStaffRequest": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/agencyAgencyStaff"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "sadminCreateAgencyStaffResponse": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "sadminCreateServiceProviderRequest": {
+      "type": "object",
+      "properties": {
+        "codename": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "sadminCreateServiceProviderResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "api_key": {
+          "type": "string"
+        }
+      }
+    },
+    "sadminCreateServiceRequest": {
+      "type": "object"
+    },
+    "sadminCreateServiceResponse": {
+      "type": "object"
+    },
+    "sadminEmpty": {
+      "type": "object"
+    },
+    "sadminGenerateServiceProviderSecretRequest": {
+      "type": "object",
+      "properties": {
+        "codename": {
+          "type": "string"
+        }
+      }
+    },
+    "sadminGenerateServiceProviderSecretResponse": {
+      "type": "object"
+    },
+    "sadminRemoveWebhookRequest": {
+      "type": "object"
+    },
+    "sadminRemoveWebhookResponse": {
+      "type": "object"
+    },
+    "sadminVersionInfoResponse": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "updated_time": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

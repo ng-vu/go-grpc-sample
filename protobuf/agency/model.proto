@@ -1,0 +1,64 @@
+syntax = "proto3";
+package agency;
+option go_package = "github.com/ng-vu/go-grpc-sample/pb/agency";
+
+message AgencyStaff {
+    string id = 1;
+    string name = 2;
+    string phone = 3;
+    string email = 4;
+    string address = 5;
+}
+
+message Customer {
+    string id = 1;
+    string name = 2;
+    string phone = 3;
+}
+
+message Order {
+    string id = 1;
+    string code = 2;
+    string service_id = 3;
+    string type = 4;
+    enum StatusDone {
+        process = 0;
+        done = 1;
+        cancel = -1;
+    }
+    StatusDone status_done = 5;
+    int32 total_amount = 6;
+    int32 total_fee = 7;
+
+    OrderInfo info = 10;
+    OrderCustomer customer = 11;
+    OrderService service = 12;
+}
+
+message OrderInfo {
+    string provider_code = 1;
+    string customer_code = 2;
+    int64 order_time = 3;
+    int64 expected_time = 4;
+
+    string note = 10;
+}
+
+message OrderCustomer {
+    string id = 1;
+    string name = 2;
+    string phone = 3;
+    string email = 4;
+    string address = 5;
+}
+
+message OrderService {
+    string fee = 1;
+    string cod = 2;
+}
+
+message Service {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
