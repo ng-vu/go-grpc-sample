@@ -28,7 +28,7 @@ $ go install ./vendor/github.com/golang/protobuf/{proto,protoc-gen-go}
 ```bash
 $ cd $GOPATH/src/github.com/ng-vu/go-grpc-sample
 $ docker volume create --name=blue_mongo_data
-$ docker volume create --name=postgres_mongo_data
+$ docker volume create --name=blue_postgres_data
 $ docker-compose up -d
 ```
 
